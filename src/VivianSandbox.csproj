@@ -4,10 +4,13 @@
         <TargetFramework>net5.0</TargetFramework>
         <UserSecretsId>aspnet-VivianSandbox-1F9440DB-DC2A-48EE-BDF4-203D77C54471</UserSecretsId>
     </PropertyGroup>
-
-    <ItemGroup>
-        <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true"/>
-    </ItemGroup>
+    
+    <Target Name="RazorWatch" BeforeTargets="_CoreCollectWatchItems">
+        <ItemGroup>
+            <RazorWatch Include="**\*.cshtml" />
+            <Watch Include="%(RazorWatch.FullPath)" />
+        </ItemGroup>
+    </Target>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.0"/>
