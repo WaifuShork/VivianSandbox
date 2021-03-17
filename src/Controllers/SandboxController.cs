@@ -16,7 +16,7 @@ namespace VivianSandbox.Controllers
             public string Output { get; set; }
         }
 
-        [Route("/")]
+        [Route("/sandbox")]
         [HttpGet]
         public IActionResult Index()
         {

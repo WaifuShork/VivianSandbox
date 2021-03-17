@@ -1,0 +1,20 @@
+@using Markdig;
+
+@model SpecPage
+@{
+    ViewData["Title"] = Model.Title + " | Vivian Spec";
+
+    var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+    string rendered = Markdown.ToHtml(Model.Content, pipeline);
+}
+
+<div class="page">
+    @if (!Model.IsRoot)
+    {
+        <a class="back-link" href="/spec">&lt;-- Return to Index</a>
+    }
+
+    <div class="markdown">
+        @Html.Raw(rendered)
+    </div>
+</div>

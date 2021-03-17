@@ -1,0 +1,18 @@
+<ul>
+    @{
+        string currentController = ViewContext.RouteData.Values["controller"] as string ?? "";
+        (string url, string label, string controller)[] items = new [] {
+            ("/", "Home", ""),
+            ("/spec", "Spec", "Spec"),
+            ("/sandbox", "Sandbox", "Sandbox")
+        };
+    }
+    
+    @foreach (var item in items)
+    {
+        bool isActive = item.controller == currentController;
+        <li active=@isActive>
+            <a href=@item.url>@item.label</a>
+        </li>
+    }
+</ul>

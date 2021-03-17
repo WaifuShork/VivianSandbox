@@ -46,6 +46,8 @@ namespace VivianSandbox
                 app.UseHsts();
             }
 
+            app.UseStatusCodePagesWithReExecute("/error", "?code={0}");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

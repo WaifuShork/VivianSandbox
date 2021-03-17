@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/viv.svg"/>
 
-    <title>@(ViewData["Title"] ?? "Vivian Sandbox")</title>
+    <title>@(ViewData["Title"] ?? "Vivian")</title>
 
     <link rel="stylesheet" href="~/lib/destyle/destyle.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
@@ -12,18 +13,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/styles/darcula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 
 <body class="preload">
 <header>
-    <a class="home" href="/">
+    <a class="return-home" href="/">
         <img src="~/img/viv.svg"/>
-        <h1>Vivian Sandbox</h1>
+        @* <h1>Vivian Sandbox</h1> *@
     </a>
-    <div>
+    <nav class="navigation">
+        @await Html.PartialAsync("_Navigation")
+    </nav>
+    <div class="controls">
         @await RenderSectionAsync("HeaderControls", required: false)
     </div>
-    @* <nav></nav> *@
 </header>
 
 <main>
