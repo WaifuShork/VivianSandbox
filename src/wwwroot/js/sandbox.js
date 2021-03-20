@@ -1,21 +1,21 @@
 ﻿void (function initializeSandbox() {
-    const defaultCode = `function Main()
+    const defaultCode = `procedure Main() => void
 {
-    var point = Point(2.6, 3.4, 4.3)
-    var v = point.Sum()
-    print(string(v))
+    var point = Point(2.6, 3.4, 4.3);
+    var v = point.Sum();
+    print(string(v));
 }
 
-struct Point()
+class Point()
 {
-    var x = 0.0
-    var y = 0.0
-    var z = 0.0
+    var x = 0.0;
+    var y = 0.0;
+    var z = 0.0;
 }
 
-function Point.Sum(): float32
+procedure Point.Sum() => float32
 {
-    return this.x + this.y + this.z
+    return this.x + this.y + this.z;
 }`;
 
     const sandbox = document.getElementById("sandbox");

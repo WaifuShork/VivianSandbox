@@ -1,0 +1,4 @@
+procedure Main() => void 
+{
+	print("hello world");
+}

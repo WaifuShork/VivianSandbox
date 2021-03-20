@@ -1,3 +1,5 @@
+using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Text.Encodings.Web;
 
@@ -28,8 +30,10 @@ namespace VivianSandbox.Controllers
         public async Task<IActionResult> Run([FromBody] SandboxRunParameters parameters)
         {
             // TODO: Implement compilation.
-            await Task.Delay(2000);
-
+            await System.IO.File.WriteAllTextAsync(@"..\VivianProject\src\Main.viv", parameters.Main);
+            var compiler = new CompilerController(@"..\VivianProject\src\Core.vivproj");
+            await compiler.Compile();
+            
             SandboxRunResult result;
             if (string.IsNullOrEmpty(parameters.Main))
             {
@@ -42,10 +46,9 @@ namespace VivianSandbox.Controllers
             {
                 result = new SandboxRunResult
                 {
-                    Output = "This is a sample output to test the execute button."
+                    Output = compiler.Result
                 };
             }
-
             return Json(result);
         }
     }
