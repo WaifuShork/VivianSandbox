@@ -6,7 +6,7 @@
     print(string(v));
 }
 
-class Point()
+class Point
 {
     var x = 0.0;
     var y = 0.0;

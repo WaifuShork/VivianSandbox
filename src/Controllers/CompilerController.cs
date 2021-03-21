@@ -20,7 +20,23 @@ namespace VivianSandbox.Controllers
                 StartInfo =
                 {
                     FileName = "dotnet.exe",
-                    Arguments = $"run --project {Source}",
+                    Arguments = $"build --project {Source}",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
+            process.Start();
+            Result = await process.StandardOutput.ReadToEndAsync();
+            await System.Console.Out.WriteLineAsync(Result);
+        }
+
+        public async Task Execute()
+        {
+            var process = new Process
+            {
+                StartInfo =
+                {
+                    FileName = @"..\VivianProject\src\bin\Debug\Core.exe",
                     UseShellExecute = false,
                     RedirectStandardOutput = true
                 }

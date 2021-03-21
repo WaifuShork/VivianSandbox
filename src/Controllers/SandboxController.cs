@@ -29,10 +29,14 @@ namespace VivianSandbox.Controllers
         [HttpPost]
         public async Task<IActionResult> Run([FromBody] SandboxRunParameters parameters)
         {
+            // D:\Vivian\Vivian\std\src\Core.vivproj
+            // ..\VivianProject\src\Core.vivproj
+            // ..\VivianProject\src\Main.viv
             // TODO: Implement compilation.
             await System.IO.File.WriteAllTextAsync(@"..\VivianProject\src\Main.viv", parameters.Main);
             var compiler = new CompilerController(@"..\VivianProject\src\Core.vivproj");
             await compiler.Compile();
+            await compiler.Execute();
             
             SandboxRunResult result;
             if (string.IsNullOrEmpty(parameters.Main))
