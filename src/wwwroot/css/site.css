@@ -1,71 +1,204 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿@import "_variables.css";
+@import "_sandbox.css";
+@import "_markdown.css";
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+html,
+body {
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    color: var(--color-gray-200);
+    background: var(--color-gray-900);
+    font: 16px "Inter", Arial, Helvetica, sans-serif;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    padding: 0.8rem 3rem;
+
+    color: var(--color-gray-300);
+    background: var(--color-gray-800);
+    box-shadow: 0 0 3px rgb(0, 0, 0, 0.4);
+}
+header .return-home img {
+    display: inline;
+    height: 32px;
+    margin-right: 0.4em;
+    vertical-align: middle;
+}
+header .return-home h1 {
+    display: inline;
+    font-weight: 400;
+    font-family: "Roboto Slab", sans-serif;
+    vertical-align: middle;
+}
+
+header nav {
+    margin: auto auto auto 2em;
+}
+header nav ul {
+    display: flex;
+}
+header nav ul li {
+    margin: auto 0.2em;
+    color: var(--color-gray-500);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.9em;
+    transition: color 0.1s;
+}
+header nav ul li:hover {
+    color: var(--color-gray-300);
+}
+header nav ul li[active] {
+    color: var(--color-purple-300);
+}
+header nav ul li a {
+    display: inline-block;
+    padding: 0.6em 1.2em;
+}
+
+header .controls {
+    margin: auto 0 auto auto;
+}
+
+footer {
+    padding: 0.8rem 2rem;
+    font-size: 0.8rem;
+
+    color: var(--color-gray-400);
+    background: var(--color-gray-800);
+    box-shadow: 0 0 3px rgb(0, 0, 0, 0.4);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.preload * {
+    transition: none !important;
+}
+
+.no-select {
+    user-select: none;
+}
+
+.button {
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    padding: 0.6em 1.5em;
+    font-size: 0.9rem;
+    border-radius: 0.8em;
+    background: var(--color-gray-700);
+    color: var(--color-white);
+    transition: background 0.1s, color 0.1s;
+}
+.button.success {
+    background: var(--color-success);
+}
+.button.success:hover {
+    background: var(--color-success-active);
+}
+.button[disabled] {
+    background: var(--color-gray-600);
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.page {
+    max-width: 960px;
+    width: 90%;
+    margin: 1em auto 4em;
+}
+
+.page .back-link {
+    color: var(--color-gray-500);
+}
+.page .back-link:hover {
+    color: var(--color-gray-400);
+}
+
+.error {
+    margin: auto;
+    text-align: center;
+}
+.error h1 {
+    font-size: 3em;
+    font-weight: 100;
+}
+.error h2 {
+    font-size: 1.4em;
+}
+
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    flex-grow: 1;
+    margin: 60px 0;
+}
+
+.homepage .banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.homepage .banner img {
+    display: block;
+    width: 90vw;
+    max-width: 300px;
+}
+.homepage .banner h1 {
+    margin: 0.4em auto 0;
+    font-size: 2.5em;
+    font-weight: 100;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-purple-200);
+}
+.homepage .banner h2 {
+    font-size: 1.3em;
+    font-weight: 100;
+    color: var(--color-purple-100);
+}
+
+.homepage .options {
+    display: grid;
+    text-align: center;
+    row-gap: 0.6em;
+}
+.homepage .option {
+    display: block;
+    padding: 1em 1.6em;
+    border-radius: 8px;
+    border: 1px solid var(--color-purple-400);
+    color: var(--color-purple-200);
+    background: transparent;
+    transition: background 0.1s;
+}
+.homepage .option:hover {
+    background: rgb(167, 139, 250, 0.2);
+}
+
+@media screen and (max-width: 640px) {
+    nav {
+        display: none;
+    }
 }

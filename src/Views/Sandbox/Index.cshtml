@@ -1,0 +1,42 @@
+@{ 
+    ViewData["Title"] = "Sandbox | Vivian";
+} 
+
+<div id="sandbox" class="sandbox">
+    <div id="sandbox-code" class="sandbox-window">
+        <h3 class="sandbox-window-title">Source Code (Main.viv)</h3>
+        <textarea id="sandbox-code-input" name="sandbox-code-input"
+            class="code-input"
+            placeholder="Your source code here!"></textarea>
+    </div>
+    <div id="sandbox-output" class="sandbox-window">
+        <h3 class="sandbox-window-title">Output</h3>
+        <div class="tabs">
+            <div class="results">
+                <pre><code></code></pre>
+            </div>
+            <div class="waiting">
+                <div>
+                    <img draggable="false" class="icon" src="~/img/loading.svg"/>
+                    <div class="label">
+                        <h3>Running ...</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section HeaderControls {
+    <div id="sandbox-controls">
+        <a id="sandbox-run-btn" class="button success">Run Program</a>
+    </div>
+}
+
+@section Scripts {
+    <script src="~/lib/codemirror/codemirror.js"></script>
+    <link rel="stylesheet" href="~/lib/codemirror/codemirror.css"/>
+    <link rel="stylesheet" href="~/lib/codemirror/themes/darcula.css"/>
+    <script src="~/lib/codemirror/modes/javascript.js"></script>
+    <script src="~/js/sandbox.js" asp-append-version="true"></script>
+}

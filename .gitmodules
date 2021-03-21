@@ -1,0 +1,3 @@
+[submodule "modules/spec"]
+	path = modules/spec
+	url = https://github.com/WaifuShork/vivianlang.git
